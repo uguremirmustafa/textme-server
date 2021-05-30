@@ -12,15 +12,12 @@ const app = express();
 // create http server
 const server = http.createServer(app);
 
-// let corsOptions = {
-//   cors: true,
-//   origins: ['http://localhost:3000'],
-// };
+let corsOptions = {
+  cors: true,
+  origins: ['http://localhost:3000', 'https://textyme.netlify.app/'],
+};
 // init socket
-const io = socketio(
-  server
-  // corsOptions
-);
+const io = socketio(server, corsOptions);
 
 io.on('connection', (socket) => {
   console.log('we have a new connection!!!!!');
